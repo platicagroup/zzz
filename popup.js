@@ -64,9 +64,9 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
             });
         }
 
-        // Filtrar por subreddit si se especifica
+        // Filtrar por subreddit si se especifica y no es 'all'
         const subFilter = document.getElementById('subredditFilter').value.trim().toLowerCase();
-        if (subFilter) {
+        if (subFilter && subFilter !== 'all') {
             filteredPosts = filteredPosts.filter(p => {
                 if (!p.subreddit) return false;
                 const sub = p.subreddit.toLowerCase();
