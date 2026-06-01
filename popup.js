@@ -101,11 +101,26 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
         let totalComments = 0;
         
         let listItems = "";
+        let cardsHtml = "";
         filteredPosts.forEach((p, index) => {
             listItems += `${index + 1}. Title: ${p.title}, r: ${p.subreddit}, views: ${p.views}, votes: ${p.score}, coments: ${p.comments}, time: ${p.time}\n`;
             totalScore += parseInt(p.score) || 0;
             totalComments += parseInt(p.comments) || 0;
             totalViews += parseViews(p.views);
+
+            const safeTitle = p.title.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            cardsHtml += `
+                <div class="post-card">
+                    <div class="post-title">${safeTitle}</div>
+                    <div class="post-meta">
+                        <span class="post-subreddit">${p.subreddit}</span>
+                        <span>👁️ ${p.views}</span>
+                        <span>👍 ${p.score}</span>
+                        <span>💬 ${p.comments}</span>
+                        <span>🕒 ${p.time}</span>
+                    </div>
+                </div>
+            `;
         });
 
         // Formatear el nuevo Markdown mejorado
@@ -119,7 +134,22 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
         md += `### 📝 Desglose por Publicación (Top Vistas)\n\n`;
         md += listItems;
 
-        results.innerText = md;
+        // Renderizar estadísticas y tarjetas en el popup
+        let popupHtmlContent = `
+            <div class="stats-card">
+                <h3>📊 Estadísticas Generales</h3>
+                <div class="stats-grid">
+                    <div><strong>Posts:</strong> ${filteredPosts.length}</div>
+                    <div><strong>Vistas:</strong> ${totalViews.toLocaleString()}</div>
+                    <div><strong>Votos:</strong> ${totalScore.toLocaleString()}</div>
+                    <div><strong>Comentarios:</strong> ${totalComments.toLocaleString()}</div>
+                </div>
+            </div>
+            <div style="font-weight: bold; margin-bottom: 10px; font-size: 13px; color: #fff;">📝 Desglose por Publicación</div>
+            ${cardsHtml || '<div style="text-align: center; color: #818384; padding: 20px;">No se encontraron posts.</div>'}
+        `;
+
+        results.innerHTML = popupHtmlContent;
         document.getElementById('outputContainer').style.display = 'block';
 
         // Lógica para botón Copiar

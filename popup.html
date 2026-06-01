@@ -60,14 +60,62 @@
     }
     #results {
       margin-top: 10px;
-      background: #272729;
-      padding: 10px;
-      border-radius: 4px;
-      font-size: 12px;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-      max-height: 200px;
+      max-height: 350px;
       overflow-y: auto;
+      padding-right: 5px;
+    }
+    .stats-card {
+      background: #272729;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      border: 1px solid #343536;
+    }
+    .stats-card h3 {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+      color: #fff;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      font-size: 12px;
+    }
+    .post-card {
+      background: #272729;
+      border: 1px solid #343536;
+      border-radius: 6px;
+      padding: 12px;
+      margin-bottom: 10px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .post-card:hover {
+      border-color: #d7dadc;
+      transform: translateY(-1px);
+    }
+    .post-title {
+      font-size: 13px;
+      font-weight: bold;
+      color: #ffffff;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 11px;
+      color: #818384;
+    }
+    .post-meta span {
+      background: #1a1a1b;
+      padding: 2px 6px;
+      border-radius: 3px;
+    }
+    .post-subreddit {
+      color: #ff4500 !important;
+      font-weight: bold;
     }
     #outputContainer {
       display: none;
@@ -103,7 +151,7 @@
       <button id="copyBtn">📋 Copiar</button>
       <button id="downloadBtn">⬇️ Descargar MD</button>
     </div>
-    <pre id="results"></pre>
+    <div id="results"></div>
   </div>
 
   <div style="text-align: center; font-size: 11px; color: #818384; margin-top: 20px;">
