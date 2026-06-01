@@ -123,17 +123,6 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
             `;
         });
 
-        // Formatear el nuevo Markdown mejorado
-        let md = `# Análisis de Perfil de Reddit\n\n`;
-        md += `### 📊 Estadísticas Generales\n`;
-        md += `- **Posts analizados:** ${filteredPosts.length}\n`;
-        md += `- **Vistas totales (aprox):** ${totalViews.toLocaleString()}\n`;
-        md += `- **Votos totales:** ${totalScore.toLocaleString()}\n`;
-        md += `- **Comentarios totales:** ${totalComments.toLocaleString()}\n\n`;
-        
-        md += `### 📝 Desglose por Publicación (Top Vistas)\n\n`;
-        md += listItems;
-
         // Renderizar estadísticas y tarjetas en el popup
         let popupHtmlContent = `
             <div class="stats-card">
@@ -151,26 +140,6 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
 
         results.innerHTML = popupHtmlContent;
         document.getElementById('outputContainer').style.display = 'block';
-
-        // Lógica para botón Copiar
-        document.getElementById('copyBtn').onclick = () => {
-            navigator.clipboard.writeText(md).then(() => {
-                const btn = document.getElementById('copyBtn');
-                btn.innerText = '✅ Copiado';
-                setTimeout(() => btn.innerText = '📋 Copiar', 2000);
-            });
-        };
-
-        // Lógica para botón Descargar
-        document.getElementById('downloadBtn').onclick = () => {
-            const blob = new Blob([md], { type: 'text/markdown' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'reddit_analysis.md';
-            a.click();
-            URL.revokeObjectURL(url);
-        };
 
     } catch (error) {
         status.innerText = 'Error: ' + error.message;

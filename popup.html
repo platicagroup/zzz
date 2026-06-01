@@ -39,30 +39,16 @@
       color: #818384;
       text-align: center;
     }
-    .action-btns {
-      display: flex;
-      gap: 10px;
-      margin-top: 15px;
-    }
-    .action-btns button {
-      flex: 1;
-      padding: 8px;
-      background-color: #343536;
-      color: #ffffff;
-      border: 1px solid #d7dadc;
-      border-radius: 4px;
-      font-size: 12px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-    .action-btns button:hover {
-      background-color: #4a4b4c;
-    }
     #results {
       margin-top: 10px;
       max-height: 350px;
       overflow-y: auto;
       padding-right: 5px;
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    #results::-webkit-scrollbar {
+      display: none;  /* Chrome, Safari and Opera */
     }
     .stats-card {
       background: #272729;
@@ -147,10 +133,6 @@
   <div id="status">Esperando acción...</div>
   
   <div id="outputContainer">
-    <div class="action-btns">
-      <button id="copyBtn">📋 Copiar</button>
-      <button id="downloadBtn">⬇️ Descargar MD</button>
-    </div>
     <div id="results"></div>
   </div>
 
