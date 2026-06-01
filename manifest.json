@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Reddit Profile Analyzer by Platica Group",
+  "version": "1.0",
+  "description": "Extrae estadísticas y posts recientes de perfiles de Reddit evadiendo bloqueos anti-bot.",
+  "permissions": [
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "*://*.reddit.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html"
+  }
+}
