@@ -64,6 +64,18 @@ document.getElementById('analyzeBtn').addEventListener('click', async () => {
             });
         }
 
+        // Filtrar por subreddit si se especifica
+        const subFilter = document.getElementById('subredditFilter').value.trim().toLowerCase();
+        if (subFilter) {
+            filteredPosts = filteredPosts.filter(p => {
+                if (!p.subreddit) return false;
+                const sub = p.subreddit.toLowerCase();
+                const cleanSub = sub.startsWith('r/') ? sub.slice(2) : sub;
+                const cleanFilter = subFilter.startsWith('r/') ? subFilter.slice(2) : subFilter;
+                return cleanSub.includes(cleanFilter);
+            });
+        }
+
         status.innerText = `Éxito. Se analizaron ${filteredPosts.length} posts.`;
 
         // Función auxiliar para convertir "1.5K" o "17K" a números reales

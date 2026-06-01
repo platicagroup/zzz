@@ -80,13 +80,15 @@
     Abre un perfil de Reddit (ej. /user/username) y haz clic en Analizar.
   </p>
   
-  <select id="periodFilter" style="width: 100%; padding: 8px; margin-bottom: 10px; background: #272729; color: #fff; border: 1px solid #d7dadc; border-radius: 4px;">
+  <select id="periodFilter" style="width: 100%; box-sizing: border-box; padding: 8px; margin-bottom: 10px; background: #272729; color: #fff; border: 1px solid #d7dadc; border-radius: 4px;">
     <option value="all">Todo el historial visible</option>
     <option value="24h">Últimas 24 Horas (Solo min y hr)</option>
     <option value="48h">Últimas 48 Horas (Hasta 1 day ago)</option>
     <option value="72h">Últimas 72 Horas (Hasta 2 days ago)</option>
     <option value="custom">Personalizado (Días)</option>
   </select>
+
+  <input type="text" id="subredditFilter" placeholder="Filtrar por subreddit (ej. r/gaming o gaming)" style="width: 100%; box-sizing: border-box; padding: 8px; margin-bottom: 10px; background: #272729; color: #fff; border: 1px solid #d7dadc; border-radius: 4px;">
 
   <div id="customDaysContainer" style="display: none; margin-bottom: 15px; text-align: right;">
     <label style="font-size: 12px; color: #818384;">Días máximos:</label>
